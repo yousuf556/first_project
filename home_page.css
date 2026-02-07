@@ -34,11 +34,12 @@ body {
     justify-content: space-between;
     align-items: center;
 
-    /* NEW */
-    background-color: wheat;   /* light solid color */
+    background-color: wheat;
     border-bottom: 2px solid lightskyblue;
-}
 
+    /* slight shadow */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
 
 /* LEFT TITLE */
 .page_title {
@@ -59,6 +60,13 @@ body {
     background-color: transparent;
     border: none;
     cursor: pointer;
+
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.nav_buttons button:hover {
+    background-color: #cdefff;
+    transform: scale(1.05);
 }
 
 /* RIGHT ICON AREA */
@@ -82,51 +90,120 @@ body {
     padding: 0 8px;
 }
 
-/* DEGREE DISPLAY */
+/* TEMPERATURE DISPLAY */
 .degree_text {
     font-size: 14px;
     margin-left: 4px;
 }
 
-/* DROPDOWN (MUSIC) */
-.dropdown {
+/* blinking red temperature */
+.temp_red {
+    color: red;
+    font-weight: bold;
+    animation: blink 1s infinite;
+    text-align: center;
+}
+
+/* BLINK ANIMATION */
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.4; }
+    100% { opacity: 1; }
+}
+
+/* ========================= */
+/* SETTINGS (LEFT SUB-PANELS) */
+/* ========================= */
+
+.settings {
     position: relative;
 }
 
-.dropdown_content {
+/* MAIN SETTINGS PANEL */
+.settings_panel {
     display: none;
     position: absolute;
-    top: 50px;
     right: 0;
+    top: 55px;
+    width: 170px;
     background-color: white;
-    padding: 10px;
-    border-radius: 6px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    padding: 6px 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+
+    animation: fadeIn 0.3s ease;
 }
 
-.dropdown:hover .dropdown_content {
+.settings:hover .settings_panel {
     display: block;
 }
-/* CONTACT PAGE LAYOUT */
-.contact_section {
+
+/* SETTINGS ROW */
+.setting_row {
+    position: relative;
+    padding: 10px;
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    padding: 40px;
+    align-items: center;
+    cursor: pointer;
 }
 
-/* TEXT SIDE */
-.contact_text {
-    font-size: 22px;
-    color: darkblue;
+.setting_row:hover {
+    background-color: #eef6ff;
 }
 
-/* EAGLE IMAGE SIDE */
-.contact_image img {
-    width: 80%;   
-    height: auto;
+/* ARROW */
+.arrow {
+    font-size: 12px;
+    color: #555;
 }
-/* ABOUT PAGE LAYOUT */
+
+/* SUB DROPDOWN → OPENS LEFT */
+.sub_panel {
+    display: none;
+    position: absolute;
+    right: 100%;      /* 🔥 OPEN TO LEFT */
+    top: 0;
+    width: 150px;
+    background-color: white;
+    border-radius: 8px;
+    padding: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* SHOW SUB PANEL */
+.setting_row:hover .sub_panel {
+    display: block;
+}
+
+/* MUSIC ITEMS */
+.music_item {
+    font-size: 14px;
+    padding: 6px;
+    border-radius: 4px;
+}
+
+.music_item:hover {
+    background-color: #cdefff;
+    cursor: pointer;
+}
+
+/* FADE ANIMATION */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================= */
+/* ABOUT PAGE */
+/* ========================= */
+
 .about_section {
     display: flex;
     justify-content: space-between;
@@ -134,24 +211,35 @@ body {
     padding: 40px;
 }
 
-/* ABOUT TEXT */
 .about_text p {
     color: red;
     font-size: 20px;
     line-height: 1.6;
-    font-family: Arial, sans-serif;
     margin: 0;
 }
 
-/* ABOUT IMAGE */
 .about_image img {
     width: 80%;
     height: auto;
 }
-.nav_buttons button:hover {
-    background-color: #cdefff;
+
+/* ========================= */
+/* CONTACT PAGE */
+/* ========================= */
+
+.contact_section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 40px;
 }
 
+.contact_text {
+    font-size: 22px;
+    color: darkblue;
+}
 
-
- 
+.contact_image img {
+    width: 80%;
+    height: auto;
+}
