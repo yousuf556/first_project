@@ -35,6 +35,15 @@
 
 /* GAME AREA */
 .game_section {
-    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
 }
 
+
+/* GAME ICON */
+.game_icon{
+    width: inherit;
+    /* object-fit: contain; */
+}
