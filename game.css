@@ -47,3 +47,32 @@
     width: inherit;
     /* object-fit: contain; */
 }
+
+.modal {
+    display: none; 
+    position: fixed; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;  
+    background-color: rgba(0, 0, 0, 0.6); 
+}
+
+.modal-content {
+    background-color: rgba(0, 0, 0, 0.6);
+    margin: auto;
+    position:absolute;
+    top: 50%;
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    width: fit-content; 
+}
+
+.closebtn {
+    color: grey;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}

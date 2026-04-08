@@ -60,87 +60,21 @@
 
 </header>
 
-<!-- SIMPLE TIC TAC TOE SCRIPT -->
-<script>
-let grid=["","","","","","","","",""];  // 3x3 grid represented as a flat array
-let turn = "X";   // X starts first
-let gameOver = false;
-
-function play(box,index) {
-
-    // stop if box already clicked
-    if (box.innerHTML !== "" || gameOver) {
-        return;
-    }
-
-    grid[index]=turn;
-
-    // place X or O
-    if (turn === "X") {
-        box.innerHTML = "<img class='game_icon' src='cross.png'>";
-        turn = "O";
-    } else {
-        box.innerHTML = "<img class='game_icon' src='circle.png'>";
-        turn = "X";
-    }
-    checkWin();
-
-}
-function checkWin() {
-    const winPatterns = [
-        [0,1,2], [3,4,5], [6,7,8], // rows
-        [0,3,6], [1,4,7], [2,5,8], // columns
-        [0,4,8], [2,4,6]           // diagonals
-    ];
-
-    for(let pattern of winPatterns){
-
-        let a = pattern[0];
-        let b = pattern[1];
-        let c = pattern[2];
-
-        if(
-            grid[a] !== "" &&
-            grid[a] === grid[b] &&
-            grid[a] === grid[c]
-
-        )
-
-        {
-            alert(grid[a]+"wins!");
-            gameOver=true;
-            return;
-
-        }
-    }
-    //check draw
-    if(!grid.includes("")){
-        alert("its adraw!");
-        gameOver=true
-
-    }
-    
-}
-function restartGame() {
-
-grid = ["","","","","","","","",""]; 
-turn = "X"; 
-gameOver = false;
-
-let boxes = document.getElementsByClassName("ticktackbox");
-
-for (let i = 0; i < boxes.length; i++) {
-    boxes[i].innerHTML = ""; 
-}
-}
-
-
-</script>
 
 <!-- GAME GRID -->
 <div class="game_section">
 
-    <button onclick="restartGame()">Restart</button>
+    <button id="openbtn">restart</button>
+    <div id="modal" class="modal">
+            
+            <div class="modal-content">
+
+                <span id="closebtn" class="closebtn">&times;</span>
+                
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/PMH54eetPSo?si=9RYEyTFiDrCNjY-b" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            
+    </div>
 
     <div class="row">
         <div class="ticktackbox" onclick="play(this,0)"></div>
@@ -161,6 +95,7 @@ for (let i = 0; i < boxes.length; i++) {
     </div>
 
 </div>
+<script src="home_page.js"></script>
 
 </body>
 </html>
